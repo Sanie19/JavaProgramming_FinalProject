@@ -22,7 +22,7 @@ public class CardController {
         return ResponseEntity.ok(cardService.create(dto));
     }
 
-    @GetMapping("/account/{accountId}")
+    @GetMapping("/{accountId}")
     public ResponseEntity<List<CardDto>> getByAccount(@PathVariable Long accountId){
         return ResponseEntity.ok(cardService.getByAccountId(accountId));
     }

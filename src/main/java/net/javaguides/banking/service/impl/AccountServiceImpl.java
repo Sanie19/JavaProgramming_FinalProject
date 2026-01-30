@@ -104,6 +104,7 @@ public class AccountServiceImpl implements AccountService {
     public List<AccountDto> getAllAccounts() {
         return accountRepository.findAll().stream()
                 .map(AccountMapper::mapToAccountDto)
+                ///  e ben the stream to a list
                 .collect(Collectors.toList());
     }
 

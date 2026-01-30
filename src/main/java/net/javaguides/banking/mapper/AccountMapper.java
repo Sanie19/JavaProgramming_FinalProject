@@ -5,6 +5,8 @@ import net.javaguides.banking.entity.Account;
 
 public class AccountMapper {
 
+
+
     public static Account mapToAccount(AccountDto dto) {
         Account a = new Account();
         a.setId(dto.getId());
@@ -15,6 +17,8 @@ public class AccountMapper {
     }
 
     public static AccountDto mapToAccountDto(Account a) {
+
+        // checj if account has a customer, if yes get id if not return null, avoids null pointer exception
         Long customerId = (a.getCustomer() != null) ? a.getCustomer().getId() : null;
         Long bankId = (a.getBank() != null) ? a.getBank().getId() : null;
 

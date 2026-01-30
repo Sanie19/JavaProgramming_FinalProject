@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@RestController  //kerkesa HTTP pergjigje json
 @RequestMapping("/api/accounts")
 public class AccountController {
 
@@ -21,7 +21,6 @@ public class AccountController {
     }
 
 
-
     @PostMapping
     public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto) {
         return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
@@ -29,17 +28,18 @@ public class AccountController {
 
 
 
-
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")    //merr llogari sipas id
     public ResponseEntity<AccountDto> getAccountById(@PathVariable Long id) {
         AccountDto accountDto = accountService.getAccountById(id);
         return ResponseEntity.ok(accountDto);
+
+        // send 200 status
 
     }
 
 
 
-    @PutMapping("/{id}/deposit")
+    @PutMapping("/{id}/deposit")  //up shton para
     public ResponseEntity<AccountDto> deposit(@PathVariable Long id,
                                              @RequestBody Map<String,Double> request) {
 
@@ -49,10 +49,12 @@ public class AccountController {
     }
 
 
-    @PutMapping("/{id}/withdraw")
+    @PutMapping("/{id}/withdraw") //terheq
     public ResponseEntity<AccountDto> withdraw(@PathVariable Long id,
                                                @RequestBody Map<String,Double> request) {
         double amount = request.get("amount");
+
+        // nuk na duhet dtoaccount sepse na duhet vetem one value
         AccountDto accountDto = accountService.withdraw(id,amount);
         return ResponseEntity.ok(accountDto);
     }

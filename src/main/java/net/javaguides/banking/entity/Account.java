@@ -12,6 +12,7 @@ import lombok.*;
 public class Account {
 
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -20,11 +21,15 @@ public class Account {
 
     private double balance;
 
+
+
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=true)
     private Customer customer;
 
     @ManyToOne
+
     @JoinColumn(name="bank_id", nullable=true)
     private Bank bank;
+
 }
